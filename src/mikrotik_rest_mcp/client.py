@@ -26,8 +26,6 @@ class RouterOSClient:
     def __init__(self) -> None:
         self.base = os.environ.get("MIKROTIK_BASE", "").rstrip("/")
         self.username = os.environ.get("MIKROTIK_USERNAME", "")
-        if not self.base or not self.username:
-            raise RouterOSError("MIKROTIK_BASE and MIKROTIK_USERNAME must be set explicitly")
         self.enable_container_shell = _env_flag("MIKROTIK_ENABLE_CONTAINER_SHELL")
         self.enable_local_files = _env_flag("MIKROTIK_ENABLE_LOCAL_FILES")
         self.redact = os.environ.get("MIKROTIK_REDACT", "1").strip().lower() not in ("0", "no", "false")
@@ -39,8 +37,6 @@ class RouterOSClient:
         else:
             self.password = os.environ.get("MIKROTIK_PASSWORD", "")
         self.timeout = float(os.environ.get("MIKROTIK_TIMEOUT", "10"))
-        if not self.password:
-            raise RouterOSError("MIKROTIK_PASSWORD or MIKROTIK_PASSWORD_FILE is not set")
         self.mode = os.environ.get("MIKROTIK_MODE", "careful").strip().lower()
         if self.mode not in ("careful", "readonly", "yolo"):
             raise RouterOSError(f"unknown MIKROTIK_MODE: {self.mode}")
@@ -67,6 +63,10 @@ class RouterOSClient:
         return headers
 
     def request(self, method: str, path: str, data: Any | None = None) -> Any:
+        if not self.base or not self.username:
+            raise RouterOSError("MIKROTIK_BASE and MIKROTIK_USERNAME must be set explicitly")
+        if not self.password:
+            raise RouterOSError("MIKROTIK_PASSWORD or MIKROTIK_PASSWORD_FILE is not set")
         url = self._url(path)
         body = None
         headers = self._headers(json_body=data is not None)

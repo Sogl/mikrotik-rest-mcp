@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.1.1] - 2026-10-02
+
+### Fixed
+- Config validation deferred to first request instead of module import — `mikrotik-rest-mcp-server --help` and tooling imports no longer crash without `MIKROTIK_*` env vars
+- `server.json` description trimmed to the MCP Registry 100-char limit
+- PyPI publish step made idempotent (`skip-existing`)
+
 ## [0.1.0] - 2026-10-02
 
 Initial public release.
@@ -12,8 +19,8 @@ Initial public release.
 - Generic `routeros_get` / `routeros_write` / `routeros_batch` (up to 16 parallel reads)
 - Client-side filtering: `where` suffixes, `fields`, `sort_by`, `limit`, `compact` one-line output
 - `describe_path` field introspection, `interface_traffic` live bps/pps, `routeros_watch` counter diffs
-- `apply_safe` / `commit_safe` — scheduler-armed auto-rollback (exact for PATCH, best-effort for DELETE, fail-closed PUT)
-- `container_shell` (opt-in), router file tools with local sandbox (`MIKROTIK_LOCAL_ROOT`), chunked download/upload
+- `apply_safe` / `commit_safe` — scheduler-armed auto-rollback (exact-field restore for PATCH, best-effort recreate for DELETE)
+- `container_shell` (opt-in, confirm-gated), router file tools with local sandbox (`MIKROTIK_LOCAL_ROOT`), chunked download/upload
 - Modes: `readonly` (no mutation tools registered), `careful` (confirmation gate + MCP elicitation), `yolo` (unrestricted, separate account), `MIKROTIK_STRICT_CONFIRM`
 - Field-name secret redaction in all tool/resource output (`MIKROTIK_REDACT`)
 - MCP resources for router status snapshots (`routeros://` URIs)
