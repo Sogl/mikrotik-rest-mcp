@@ -1,0 +1,50 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Sogl/mikrotik-rest-mcp",
+  "description": "MCP server for MikroTik RouterOS 7 REST API — filtered reads, guarded mutations, timed rollback, container shell",
+  "version": "0.1.0",
+  "repository": {
+    "url": "https://github.com/Sogl/mikrotik-rest-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "mikrotik-rest-mcp-server",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "MIKROTIK_BASE",
+          "isRequired": true,
+          "format": "string",
+          "description": "RouterOS base URL, e.g. https://192.168.88.1"
+        },
+        {
+          "name": "MIKROTIK_USERNAME",
+          "isRequired": true,
+          "format": "string",
+          "description": "RouterOS username"
+        },
+        {
+          "name": "MIKROTIK_PASSWORD",
+          "isSecret": true,
+          "format": "string",
+          "description": "RouterOS password (or use MIKROTIK_PASSWORD_FILE)"
+        },
+        {
+          "name": "MIKROTIK_PASSWORD_FILE",
+          "format": "string",
+          "description": "Path to file containing the password"
+        },
+        {
+          "name": "MIKROTIK_MODE",
+          "format": "string",
+          "description": "readonly | careful (default) | yolo"
+        }
+      ],
+      "version": "0.1.0"
+    }
+  ]
+}

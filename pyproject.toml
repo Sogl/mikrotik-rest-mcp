@@ -1,0 +1,35 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mikrotik-rest-mcp-server"
+version = "0.1.0"
+description = "MCP server for RouterOS 7 REST API — filtered reads, guarded mutations, timed rollback, container shell"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{name = "Sogl"}]
+keywords = ["mcp", "routeros", "mikrotik", "network", "rest"]
+dependencies = [
+  "mcp>=1.20,<2",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Networking",
+]
+
+[project.urls]
+Repository = "https://github.com/Sogl/mikrotik-rest-mcp"
+Issues = "https://github.com/Sogl/mikrotik-rest-mcp/issues"
+
+[project.scripts]
+mikrotik-rest-mcp-server = "mikrotik_rest_mcp.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mikrotik_rest_mcp"]
