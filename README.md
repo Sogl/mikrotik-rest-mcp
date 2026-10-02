@@ -50,7 +50,7 @@ Built for real ops work: the agent can inventory the router, diff firewall/routi
 ## Installation
 
 ```bash
-pipx install git+https://github.com/Sogl/mikrotik-rest-mcp.git   # or: pip install .
+pipx install mikrotik-rest-mcp-server   # or: uvx mikrotik-rest-mcp-server
 ```
 
 This exposes the `mikrotik-rest-mcp-server` console script. For development: `git clone` + `pip install -e .`

@@ -9,7 +9,7 @@ description = "MCP server for RouterOS 7 REST API — filtered reads, guarded mu
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
-authors = [{name = "Sogl"}]
+authors = [{name = "Artyom Mezin (Sogl)"}]
 keywords = ["mcp", "routeros", "mikrotik", "network", "rest"]
 dependencies = [
   "mcp>=1.20,<2",

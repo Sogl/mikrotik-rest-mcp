@@ -48,10 +48,10 @@ MCP-сервер, дающий кодинг-агентам структурир�
 ## Установка
 
 ```bash
-pipx install mikrotik-rest-mcp-server    # или: pipx install git+https://github.com/Sogl/mikrotik-rest-mcp.git
+pipx install mikrotik-rest-mcp-server   # или: uvx mikrotik-rest-mcp-server
 ```
 
-Появится консольная команда `mikrotik-rest-mcp`. Для разработки: `git clone` + `pip install -e .`
+Появится консольная команда `mikrotik-rest-mcp-server`. Для разработки: `git clone` + `pip install -e .`
 
 ## Конфигурация
 
